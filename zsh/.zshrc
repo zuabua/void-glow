@@ -30,3 +30,44 @@ ZSH_AUTOSUGGEST_HIGHLIGT_STYULE="fg=#64748b"
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+
+# Void glow palette
+
+# DIR
+typeset -g POWERLEVEL9K_DIR_FOREGROUND='#818cf8'
+typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND='#64748b'
+typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGORUND='#5eead4'
+typeset -g POWERLEVEL9K_DIR_NOT_WRITABLE_FOREGROUND='#f87171'
+typeset -g POWERLEVEL9K_DIR_NON_EXISTENT_FOREGROUND='#f87171'
+
+# VCS
+typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND='#5eead4'
+typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='#5eead4'
+typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='#818cf8'
+
+# Status
+typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND='#5eead4'
+typeset -g POWERLEVEL9K_STATUS_OK_PIPE_FOREGROUND='#5eead4'
+typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND='#f87171'
+typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_FOREGROUND='#f87171'
+typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_FOREGROUND='#f87171'
+p10k reload 2>/dev/null
+
+# Syntax Highlighting
+
+typeset -gA ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[default]='fg=#e2e8f0'                 # VOID_TEXT
+ZSH_HIGHLIGHT_STYLES[command]='fg=#5eead4'                 # VOID_ACCENT_TEAL — valid cmd
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#5eead4'                 # VOID_ACCENT_TEAL
+ZSH_HIGHLIGHT_STYLES[function]='fg=#5eead4'                # VOID_ACCENT_TEAL
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#5eead4'                   # VOID_ACCENT_TEAL
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#f87171'           # VOID_RED — invalid
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#818cf8'           # VOID_ACCENT_INDIGO — if/for/while
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#818cf8'  # VOID_ACCENT_INDIGO — strings
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#818cf8'  # VOID_ACCENT_INDIGO — strings
+ZSH_HIGHLIGHT_STYLES[command-substitution]='fg=#5eead4'    # VOID_ACCENT_TEAL
+ZSH_HIGHLIGHT_STYLES[path]='fg=#e2e8f0,underline'          # VOID_TEXT, underlined
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#64748b'    # VOID_SUBTEXT — flags recede
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#64748b'    # VOID_SUBTEXT
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#64748b'                 # VOID_SUBTEXT — muted
