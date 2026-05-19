@@ -2,3 +2,6 @@
 *.bak
 *~
 .DS_Store
+b2-credentials
+*.credentials
+credentials
