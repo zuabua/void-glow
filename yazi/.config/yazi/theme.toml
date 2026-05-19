@@ -1,0 +1,41 @@
+# VOID GLOW - Yazi theme. Colors mirror ~/.config/theme/colors.sh
+[mgr]
+cwd = { fg = "#5eead4" }
+directory = { fg = "#5eead4" }
+hovered = { fg = "#0d0d0f", bg = "#5eead4" }
+preview_hovered = { underline = true }
+find_keyword = { fg = "#818cf8", bold = true }            # VOID_ACCENT_INDIGO - search match
+find_position = { fg = "#64748b" }                        # VOID_SUBTEXT
+marker_selected = { fg = "#5eead4", bg = "#5eead4" }      # VOID_ACCENT_TEAL
+marker_copied = { fg = "#818cf8", bg = "#818cf8" }        # VOID_ACCENT_INDIGO
+marker_cut = { fg = "#f87171", bg = "#f87171" }           # VOID_RED
+tab_active = { fg = "#0d0d0f", bg = "#5eead4" }           # VOID_BASE on TEAL
+tab_inactive = { fg = "#64748b", bg = "#1c1c24" }         # VOID_SUBTEXT on OVERLAY
+border_symbol = "│"
+border_style = { fg = "#1c1c24" }                         # VOID_OVERLAY - subtle borders
+
+[status]
+separator_open  = ""
+separator_close = ""
+mode_normal = { fg = "#0d0d0f", bg = "#5eead4", bold = true }   # BASE on TEAL
+mode_select = { fg = "#0d0d0f", bg = "#818cf8", bold = true }   # BASE on INDIGO
+mode_unset  = { fg = "#0d0d0f", bg = "#f87171", bold = true }   # BASE on RED
+progress_label  = { fg = "#e2e8f0" }                            # VOID_TEXT
+progress_normal = { fg = "#5eead4" }                            # VOID_ACCENT_TEAL
+progress_error  = { fg = "#f87171" }                            # VOID_RED
+
+[input]
+border   = { fg = "#5eead4" }                             # VOID_ACCENT_TEAL
+value    = { fg = "#e2e8f0" }                             # VOID_TEXT
+
+[select]
+border   = { fg = "#5eead4" }                             # VOID_ACCENT_TEAL
+active   = { fg = "#818cf8" }                             # VOID_ACCENT_INDIGO
+
+[filetype]
+rules = [
+  { mime = "image/*", fg = "#818cf8" },
+  { mime = "video/*", fg = "#818cf8" },
+  { mime = "application/*", fg = "#f87171" },
+  { url = "*.md", fg = "#5eead4" },
+]

@@ -71,3 +71,12 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=#e2e8f0,underline'          # VOID_TEXT, underlin
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#64748b'    # VOID_SUBTEXT — flags recede
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#64748b'    # VOID_SUBTEXT
 ZSH_HIGHLIGHT_STYLES[comment]='fg=#64748b'                 # VOID_SUBTEXT — muted
+
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
