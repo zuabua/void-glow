@@ -18,6 +18,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # CachyOS tuning (optional)
 # source /usr/share/cachyos-zsh-config/cachyos-config.zsh
 
+export PATH="$HOME/.local/bin:$PATH"
 
 # Plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
