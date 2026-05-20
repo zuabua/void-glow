@@ -7,7 +7,7 @@
 
 	"modules-left": ["hyprland/workspaces"],
 	"modules-center": ["clock"],
-	"modules-right": ["custom/b2", "pulseaudio", "network", "cpu", "memory", "tray"],
+	"modules-right": ["custom/b2", "custom/gamemode", "pulseaudio", "network", "cpu", "memory", "tray"],
 
 	"hyprland/workspaces": {
 		"format": "{id}",
@@ -52,5 +52,12 @@
     "tooltip": true,
     "tooltip-format": "Toggle B2 drop zone",
     "on-click": "~/.config/waybar/b2-toggle.sh"
+  },
+
+  "custom/gamemode": {
+    "exec": "cat ~/.cache/voidglow-gamemode 2>/dev/null | awk '{ if ($1==\"1\") print \"{\\\"text\\\":\\\"\\uf11b\\\",\\\"class\\\":\\\"on\\\",\\\"tooltip\\\":\\\"Gamemode ON\\\"}\"; else print \"{\\\"text\\\":\\\"\\uf11b\\\",\\\"class\\\":\\\"off\\\",\\\"tooltip\\\":\\\"Gamemode OFF\\\"}\" }'",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "~/.config/hypr/gamemode.sh"
   }
 }

@@ -18,7 +18,7 @@ if [ "$CURRENT" = "1" ]; then
     keyword misc:vfr 1 ;\
     keyword misc:vrr 0" >/dev/null
   echo "0" >"$STATE"
-  notify-send -t 1500 "Void Glow" "Gamemode OFF — visuals restored"
+  notify-send -t 1500 "Void Glow" "Gamemode OFF — visuals restored" 2>/dev/null || true
 else
   # ── Turning ON: kill everything that costs frames ────────
   hyprctl --batch "\
@@ -29,5 +29,5 @@ else
     keyword misc:vfr 0 ;\
     keyword misc:vrr 1" >/dev/null
   echo "1" >"$STATE"
-  notify-send -t 1500 "Void Glow" "Gamemode ON — performance mode engaged"
+  notify-send -t 1500 "Void Glow" "Gamemode ON — performance mode engaged" 2>/dev/null || true
 fi

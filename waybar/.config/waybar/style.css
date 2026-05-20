@@ -54,7 +54,8 @@ window#waybar {
 #cpu,
 #memory,
 #tray,
-#custom-b2 {
+#custom-b2,
+#custom-gamemode {
 	padding: 0 10px;
 	margin: 4px 2px;
 	color: @text;
@@ -66,6 +67,17 @@ window#waybar {
   color: @teal;
   font-size: 16px;
   padding: 0 12px;
+}
+
+#custom-gamemode.off {
+  color: @subtext;          /* VOID_SUBTEXT — muted when inactive */
+  font-size: 14px;
+}
+
+#custom-gamemode.on {
+  color: @base;             /* VOID_BASE — dark text */
+  background-color: @red;   /* VOID_RED bg — "performance mode engaged" */
+  font-size: 14px;
 }
 
 #cpu { color: @teal; }
