@@ -7,7 +7,7 @@
 
 	"modules-left": ["hyprland/workspaces"],
 	"modules-center": ["clock"],
-	"modules-right": ["pulseaudio", "network", "cpu", "memory", "tray"],
+	"modules-right": ["custom/b2", "pulseaudio", "network", "cpu", "memory", "tray"],
 
 	"hyprland/workspaces": {
 		"format": "{id}",
@@ -45,5 +45,12 @@
 
 	"tray": {
 		"spacing": 8
-	}
+	},
+
+  "custom/b2": {
+    "format": "\uf0c2",
+    "tooltip": true,
+    "tooltip-format": "Toggle B2 drop zone",
+    "on-click": "~/.config/waybar/b2-toggle.sh"
+  }
 }

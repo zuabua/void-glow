@@ -53,12 +53,19 @@ window#waybar {
 #network,
 #cpu,
 #memory,
-#tray {
+#tray,
+#custom-b2 {
 	padding: 0 10px;
 	margin: 4px 2px;
 	color: @text;
 	background-color: @overlay;
 	border-radius: 6px;
+}
+
+#custom-b2 {
+  color: @teal;
+  font-size: 16px;
+  padding: 0 12px;
 }
 
 #cpu { color: @teal; }
