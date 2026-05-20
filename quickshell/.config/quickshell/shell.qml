@@ -1,4 +1,4 @@
-// VOID GLOW - B2 widget, full UI (upload + manage)
+// VOID GLOW - B2 widget, full UI (upload + manage + fetch)
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
@@ -62,13 +62,22 @@ ShellRoot {
     Process {
         id: deleteOne
         property string target: ""
-        // zenity --question for confirmation, then delete + refresh
         command: ["bash", "-c",
             "zenity --question --title='Delete from B2?' --text=\"Delete: $TARGET\\n\\nThis cannot be undone.\" " +
             "&& ~/.config/quickshell/b2-delete.sh \"$TARGET\" " +
             "&& ~/.config/quickshell/b2-list.sh"
         ]
         environment: ({ "TARGET": deleteOne.target })
+        running: false
+    }
+    Process {
+        id: fetchOne
+        property string source: ""
+        command: ["bash", "-c",
+            "d=$(zenity --file-selection --directory --title='Save to which directory?') " +
+            "&& ~/.config/quickshell/b2-fetch.sh \"$SOURCE\" \"$d\""
+        ]
+        environment: ({ "SOURCE": fetchOne.source })
         running: false
     }
 
@@ -196,7 +205,7 @@ ShellRoot {
                 Text {
                     Layout.alignment: Qt.AlignHCenter
                     text: root.manageOpen ? "\u2715  hide manage" : "\u22ef  manage bucket"
-                    color: "#64748b"        // VOID_SUBTEXT - recede
+                    color: "#64748b"
                     font.family: "JetBrainsMono Nerd Font Mono"
                     font.pixelSize: 10
                     MouseArea {
@@ -215,7 +224,7 @@ ShellRoot {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     radius: 8
-                    color: "#0d0d0f"           // VOID_BASE - inset
+                    color: "#0d0d0f"
                     border.color: "#1c1c24"
                     border.width: 1
 
@@ -224,7 +233,6 @@ ShellRoot {
                         anchors.margins: 8
                         spacing: 6
 
-                        // Header row: count + refresh
                         RowLayout {
                             Layout.fillWidth: true
                             Text {
@@ -243,7 +251,6 @@ ShellRoot {
                             }
                         }
 
-                        // Scrollable list
                         ListView {
                             Layout.fillWidth: true
                             Layout.fillHeight: true
@@ -258,18 +265,46 @@ ShellRoot {
                                     anchors.fill: parent
                                     anchors.leftMargin: 4
                                     anchors.rightMargin: 4
+                                    spacing: 4
                                     Text {
                                         Layout.fillWidth: true
                                         text: modelData
-                                        color: "#e2e8f0"        // VOID_TEXT
+                                        color: "#e2e8f0"
                                         elide: Text.ElideMiddle
                                         font.family: "JetBrainsMono Nerd Font Mono"
                                         font.pixelSize: 10
                                     }
+                                    // Download (indigo, secondary)
                                     Rectangle {
                                         width: 22; height: 18; radius: 3
-                                        // Visually dim and unclickable while any delete is in flight
-                                        opacity: deleteOne.running ? 0.35 : 1.0
+                                        property bool busy: deleteOne.running || fetchOne.running
+                                        opacity: busy ? 0.35 : 1.0
+                                        color: "transparent"
+                                        border.color: "#818cf8"
+                                        border.width: 1
+                                        Behavior on opacity { NumberAnimation { duration: 150 } }
+                                        Text {
+                                            anchors.centerIn: parent
+                                            text: "\uf019"
+                                            color: "#818cf8"
+                                            font.family: "JetBrainsMono Nerd Font Mono"
+                                            font.pixelSize: 9
+                                        }
+                                        MouseArea {
+                                            anchors.fill: parent
+                                            cursorShape: parent.busy ? Qt.ForbiddenCursor : Qt.PointingHandCursor
+                                            enabled: !parent.busy
+                                            onClicked: {
+                                                fetchOne.source = modelData
+                                                fetchOne.running = true
+                                            }
+                                        }
+                                    }
+                                    // Delete (red, destructive)
+                                    Rectangle {
+                                        width: 22; height: 18; radius: 3
+                                        property bool busy: deleteOne.running || fetchOne.running
+                                        opacity: busy ? 0.35 : 1.0
                                         color: "transparent"
                                         border.color: "#f87171"
                                         border.width: 1
@@ -283,8 +318,8 @@ ShellRoot {
                                         }
                                         MouseArea {
                                             anchors.fill: parent
-                                            cursorShape: deleteOne.running ? Qt.ForbiddenCursor : Qt.PointingHandCursor
-                                            enabled: !deleteOne.running
+                                            cursorShape: parent.busy ? Qt.ForbiddenCursor : Qt.PointingHandCursor
+                                            enabled: !parent.busy
                                             onClicked: {
                                                 deleteOne.target = modelData
                                                 deleteOne.running = true
