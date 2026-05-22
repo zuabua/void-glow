@@ -1,0 +1,15 @@
+[SddmGreeterTheme]
+Name=Void Glow
+Description=Dark, moody Void Glow login
+Author=Emil
+License=MIT
+Type=sddm-theme
+Version=1.0
+Website=
+Screenshot=
+MainScript=Main.qml
+ConfigFile=theme.conf
+TranslationsDirectory=
+Email=
+Theme-Id=void-glow
+Theme-API=2.0
