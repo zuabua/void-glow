@@ -1,0 +1,96 @@
+# Void Glow — packages.txt
+# Authoritative dependency list. install.sh reads this.
+#
+# Sections:
+#   [pacman]   official Arch/CachyOS repos
+#   [aur]      requires paru or yay
+#   [pipx]     Python applications via pipx
+#
+# Comments and blank lines are ignored.
+
+[pacman]
+# ── Core desktop ────────────────────────────────────────
+hyprland
+hyprlock
+hypridle
+brightnessctl
+waybar
+wofi
+dunst
+libnotify
+
+# ── Terminal + shell + dev ──────────────────────────────
+kitty
+zsh
+zsh-theme-powerlevel10k
+zsh-syntax-highlighting
+zsh-autosuggestions
+tmux
+neovim
+ripgrep
+fd
+lazygit
+yazi
+ffmpegthumbnailer
+p7zip
+jq
+poppler
+
+# ── File manager ────────────────────────────────────────
+thunar
+
+# ── Wallpaper system ────────────────────────────────────
+awww
+waypaper
+
+# ── Screenshots ─────────────────────────────────────────
+grim
+slurp
+wl-clipboard
+
+# ── Pickers / dialogs ───────────────────────────────────
+zenity
+
+# ── Quickshell + B2 widget runtime ──────────────────────
+quickshell
+
+# ── Fonts ───────────────────────────────────────────────
+ttf-jetbrains-mono-nerd
+otf-font-awesome
+
+# ── GTK theming deps ────────────────────────────────────
+sassc
+gnome-themes-extra
+
+# ── SDDM (Qt5-based as of CachyOS 2026) ─────────────────
+sddm
+qt5-base
+qt5-declarative
+qt5-quickcontrols2
+qt5-graphicaleffects
+
+# ── Image tools (background generation, etc.) ───────────
+imagemagick
+
+# ── Node toolchain (markdownlint, nvim LSP, etc.) ───────
+nodejs
+npm
+
+# ── Stow itself ─────────────────────────────────────────
+stow
+
+# ── Build essentials (for paru/yay if needed manually) ──
+base-devel
+git
+
+
+[aur]
+# Moved from extra repo Nov 2025; required by Tokyonight-GTK.
+gtk-engine-murrine
+# Rounded, Tokyo Night-friendly icon set.
+tela-circle-icon-theme
+
+
+[pipx]
+# Backblaze B2 CLI (used by the Quickshell B2 widget).
+b2
